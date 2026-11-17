@@ -11,7 +11,7 @@
 - **Dataset EDA:** not run; no source files are available locally.
 - **Recent literature:** verified papers from 2024, 2025, and 2026 are in `literature/review.md` and `literature/papers.csv`. Results are explicitly paper-reported, not reproduced. Review is a seed review, not a completed systematic review.
 - **Research gaps:** source-grounded provisional table in `literature/research_gaps.md`.
-- **Three methodology implementations:** framework profiles and code scaffolding added. Paper-specific feature/target mapping and parameters must be checked against actual data; implementations are not claimed as reproductions yet.
+- **Three methodology implementations × two datasets:** `configs/experiment_matrix.json` and `scripts/run_matrix.py` enumerate all six requested combinations. A dry-run audit was executed; all six report `BLOCKED_DATA_FILE_MISSING`. The single-run pipeline exists, but paper-specific feature/target mapping, data fit, and parts of the original feature-selection/tuning procedures remain unverified/incomplete. No combination is claimed as a completed reproduction.
 - **Evaluation:** generic clinical metric, validation-threshold, bootstrap-CI and curve code is present. Not executed on research data; no confusion matrices or numerical results exist.
 - **Final manuscript/presentation:** a concise progress presentation outline is provided in `docs/presentation_outline.md`. A full academic report remains pending, correctly, until the experiment results exist.
 

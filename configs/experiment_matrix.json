@@ -1,0 +1,62 @@
+{
+  "matrix_name": "three_recent_methodologies_by_two_dataset_candidates",
+  "minimum_original_valid_rows": 2000,
+  "seed": 271828,
+  "datasets": {
+    "armd_urine": {
+      "input": "data/processed/armd_urine_cohort.parquet",
+      "source": "Dryad ARMD, filtered/assembled from documented source tables",
+      "version": "pending local download and exact repository release",
+      "unit_of_analysis": "urine culture record; exact source key and join cardinalities pending",
+      "target_column": null,
+      "negative_label": null,
+      "positive_label": null,
+      "patient_id": null,
+      "record_id": null,
+      "mapping_verified": false
+    },
+    "taylor_ed": {
+      "input": "data/raw/taylor_s1.csv",
+      "source": "Taylor et al. PLOS ONE S1 supplemental CSV",
+      "version": "source file version pending download/checksum",
+      "unit_of_analysis": "adult ED visit; source field names and target encoding pending file inspection",
+      "target_column": null,
+      "negative_label": null,
+      "positive_label": null,
+      "patient_id": null,
+      "record_id": null,
+      "mapping_verified": false
+    }
+  },
+  "methods": {
+    "dedeene_2024_limited_mlr": {
+      "reference": "https://doi.org/10.1016/j.cca.2024.119854",
+      "paper_feature_spec": ["rbc_count", "wbc_count", "bacteria_count", "yeast_count", "tubular_epithelial_count", "squamous_epithelial_count"],
+      "paper_feature_note": "Exact flow-cytometry measurements and units required; proxy dipstick/microscopy values are not interchangeable.",
+      "dataset_feature_columns": null,
+      "compatibility_note": "Awaiting source-file assay/schema inspection; candidate sources may not contain the same flow-cytometry analyzer fields."
+    },
+    "farashi_2025_voting_ensemble": {
+      "reference": "https://doi.org/10.1186/s12911-024-02819-2",
+      "paper_feature_spec": ["ua_nitrite", "ua_wbc", "ua_bili", "ua_leuk", "ua_urobili", "abx", "abxUTI", "age", "chief_complaint", "gender", "Glucose", "Lymphocytes", "MPV", "Potassium", "RDW", "ua_blood", "ua_clarity", "ua_color"],
+      "paper_feature_note": "18 variables selected/reported on Taylor et al.'s ED cohort; feature selection and tuning must be training-fold confined for reproduction.",
+      "dataset_feature_columns": null,
+      "compatibility_note": "Taylor is the source cohort used in the paper, so a re-analysis is not independent validation; ARMD is a different culture cohort and lacks a verified mapping."
+    },
+    "lin_2026_seven_feature_rf": {
+      "reference": "https://doi.org/10.1080/07853890.2026.2742648",
+      "paper_feature_spec": ["gender", "lymphocyte_absolute", "crp", "leukocyte_esterase", "nitrite", "urine_bacteria_count", "urine_wbc_count"],
+      "paper_feature_note": "Seven pediatric-source clinical/UA features. Applying to adult data is out-of-domain adaptation, not direct reproduction.",
+      "dataset_feature_columns": null,
+      "compatibility_note": "Exact analyte availability/units and assay mappings are unverified for both candidate files."
+    }
+  },
+  "experiments": [
+    {"id": "armd_dedeene2024", "dataset": "armd_urine", "method": "dedeene_2024_limited_mlr"},
+    {"id": "armd_farashi2025", "dataset": "armd_urine", "method": "farashi_2025_voting_ensemble"},
+    {"id": "armd_lin2026", "dataset": "armd_urine", "method": "lin_2026_seven_feature_rf"},
+    {"id": "taylor_dedeene2024", "dataset": "taylor_ed", "method": "dedeene_2024_limited_mlr"},
+    {"id": "taylor_farashi2025", "dataset": "taylor_ed", "method": "farashi_2025_voting_ensemble"},
+    {"id": "taylor_lin2026", "dataset": "taylor_ed", "method": "lin_2026_seven_feature_rf"}
+  ]
+}

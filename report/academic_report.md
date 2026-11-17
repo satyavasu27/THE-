@@ -101,6 +101,8 @@ The full gap matrix is in `literature/research_gaps.md`. These are evidence-grou
 
 ## 7. Proposed methodology and partial implementations
 
+The requested full factorial comparison is represented by six slots in `configs/experiment_matrix.json`: each of the three selected paper families paired with each of the two dataset candidates. `scripts/run_matrix.py` audits and optionally executes only combinations whose source file, target mapping, row count, record uniqueness, and exact dataset-specific feature mapping have been verified. The dry run performed for this update reported **6/6 blocked because source files are missing**. This is not six model executions and does not produce scientific performance results.
+
 ### 7.1 Candidate paper-specific implementations
 
 - **2024 Dedeene limited-feature MLR:** use only the six same-definition flow-cytometry variables (RBC, WBC, bacteria, yeast, tubular epithelial, squamous epithelial counts). Do not substitute dipstick or unrelated microscopy counts without an explicit deviation. The target must use compatible source culture criteria. On datasets without exact analyzer measurements, mark not evaluable.

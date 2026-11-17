@@ -2,7 +2,7 @@
 
 **Project:** Machine Learning-Based Urinary Tract Infection Detection: Comparative Evaluation of Recent Methodologies, Dataset Analysis, and Research Gap Identification.
 
-**Status (2026-11-17):** Phase 1 workspace audit and source verification started; no legacy research files or datasets were present in the checkout. Two large public-data candidates have been verified from their primary sources, but neither file has been downloaded into this restricted execution environment. The dataset acquisition/row-audit gate is therefore **not passed**. No model experiments or quantitative results are claimed. See [`docs/EXECUTION_STATUS.md`](docs/EXECUTION_STATUS.md).
+**Status (2026-11-17):** Phase 1 workspace audit and source verification started; no legacy research files or datasets were present in the checkout. Two large public-data candidates have been verified from their primary sources, but neither file has been downloaded into this restricted execution environment. The dataset acquisition/row-audit gate is therefore **not passed**. A 3-method × 2-dataset (six-slot) experiment matrix is implemented; its dry run marks all six combinations blocked because the source files are absent. No model fits or quantitative results are claimed. See [`docs/EXECUTION_STATUS.md`](docs/EXECUTION_STATUS.md).
 
 ## Research-integrity gate
 
@@ -13,7 +13,8 @@ The project must not run comparative experiments until both local datasets have 
 - `data/` — source manifest, raw-data landing area, processed-data landing area.
 - `literature/` — verified review table and research-gap analysis.
 - `src/uti_research/` — reusable methodology and evaluation code.
-- `scripts/` — command-line entry points.
+- `scripts/` — dataset audit, single-run experiment, and six-combination matrix runner (`run_matrix.py`).
+- `docs/six_combination_matrix.md` — per-combination status and compatibility notes.
 - `configs/` — method profiles and run settings.
 - `notebooks/` — unexecuted per-dataset EDA notebook template; run separately after data acquisition.
 - `results/` — reserved for genuine results only; currently no experiment outputs.
