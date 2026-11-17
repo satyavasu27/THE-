@@ -16,6 +16,7 @@ The repository initially contained only a seven-byte `README.md`; there were no 
    - Taylor et al.'s publicly linked PLOS ONE supplementary CSV, described as 80,387 adult ED visits (18,284 culture-positive and 62,103 negative in the paper). The paper's outcome is a study-defined ED/culture phenotype, not a universal clinical UTI diagnosis.
 4. Verified three recent journal methodology sources and documented their study designs and the limits to faithful reproduction in `literature/`.
 5. Created reproducibility scaffolding and explicitly withheld model experiments, figures, metrics, and conclusions rather than fabricate them.
+6. Added a six-slot matrix runner for the three paper families against both dataset candidates. Its current dry-run records all six slots as blocked because their source files are absent.
 
 ## Blocking condition
 
