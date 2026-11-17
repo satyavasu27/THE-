@@ -1,0 +1,1 @@
+Processed, de-identified derivatives and cleaning outputs belong here when source terms permit. Preserve original inputs; document every cleaning/exclusion operation in code and audit logs. Processed outputs are ignored by Git by default.
