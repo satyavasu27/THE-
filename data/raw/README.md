@@ -1,0 +1,1 @@
+Original data files belong here only when the source's access/licensing terms permit. Do not commit datasets, credentials, protected information or large files. Record the file name, source version, source URL, retrieval timestamp and SHA-256 in `data/source_manifest.csv` after acquisition.

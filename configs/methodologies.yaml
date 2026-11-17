@@ -1,0 +1,28 @@
+# Source-grounded candidates. These are methodology profiles, not completed reproductions.
+# Published hyperparameters are entered only when verified in the article; unspecified
+# implementation choices must be marked as our adaptation in the run log.
+methods:
+  dedeene_2024_limited_mlr:
+    reference: https://doi.org/10.1016/j.cca.2024.119854
+    estimator: logistic_regression
+    features: [rbc_count, wbc_count, bacteria_count, yeast_count, tubular_epithelial_count, squamous_epithelial_count]
+    feature_note: Six flow-cytometry variables. Only evaluate if all exact measurement definitions and units match; ordinary dipstick/microscopy proxies are not equivalent.
+    target: culture positivity per Dedeene et al.; not clinical UTI diagnosis
+    evaluation_note: Original study used 34,584 training samples and time-separated test sets of 10,083 and 9,289; this project cannot reproduce those cohorts.
+    published_hyperparameters: not fully specified in accessible article text; do not invent and call exact reproduction.
+  farashi_2025_voting_ensemble:
+    reference: https://doi.org/10.1186/s12911-024-02819-2
+    estimator: voting_ensemble
+    features: [ua_nitrite, ua_wbc, ua_bili, ua_leuk, ua_urobili, abx, abxUTI, age, chief_complaint, gender, Glucose, Lymphocytes, MPV, Potassium, RDW, ua_blood, ua_clarity, ua_color]
+    feature_note: Exact 18-variable set reported by the paper. Resolve every name/unit against the source supplement. The paper's variable selection/tuning must be redone inside training folds if reproducing selection; do not apply full-cohort selection before splitting.
+    target: Taylor et al. study-defined ED UTI/culture proxy; verify exact label implementation from S1 data/code.
+    evaluation_note: Original paper reuses the Taylor et al. dataset (>80,000 encounters), so a reanalysis of that same data is not independent validation.
+    published_hyperparameters: article-level exact estimator settings must be extracted; fallback defaults are implementation adaptations, not faithful reproduction.
+  lin_2026_seven_feature_rf:
+    reference: https://doi.org/10.1080/07853890.2026.2742648
+    estimator: random_forest
+    features: [gender, lymphocyte_absolute, crp, leukocyte_esterase, nitrite, urine_bacteria_count, urine_wbc_count]
+    feature_note: Pediatric-source feature set; all variables and units must match. Its source cohort has 581 observations, below this project's dataset floor (it is a paper, not a candidate project dataset). Adult data would be an explicitly out-of-domain adaptation.
+    target: pediatric urine-culture positivity under the paper's quantitative CFU criteria; not a clinical UTI diagnosis
+    evaluation_note: Original 70:30 random holdout (406/175), with 245 culture-positive and 336 negative overall; internal validation only.
+    published_hyperparameters: full model settings must be verified from the article/code before claiming exact reproduction.
